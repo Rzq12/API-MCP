@@ -1,0 +1,18 @@
+services:
+  seirama-api-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: seirama-api-mcp:latest
+    container_name: seirama-api-mcp
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8003:8003"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8003/mcp', timeout=5)\""]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
