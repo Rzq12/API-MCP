@@ -2,7 +2,7 @@
 name = "seirama-api-mcp"
 version = "0.1.0"
 requires-python = ">=3.11"
-dependencies = ["mcp", "python-dotenv"]
+dependencies = ["mcp<2", "python-dotenv"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
