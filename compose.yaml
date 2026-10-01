@@ -4,7 +4,6 @@ services:
       context: .
       dockerfile: Dockerfile
     image: seirama-api-mcp:latest
-    container_name: seirama-api-mcp
     restart: unless-stopped
     env_file:
       - .env

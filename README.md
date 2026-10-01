@@ -24,7 +24,9 @@ cp .env.example .env
 Sesuaikan `BKN_API_BASE_URL` di `.env`, kemudian jalankan service:
 
 ```bash
-podman compose up -d --build
+podman compose down --remove-orphans
+podman compose build --no-cache
+podman compose up -d
 podman compose ps
 podman compose logs -f seirama-api-mcp
 ```
