@@ -17,6 +17,12 @@ def call(path, params=None):
         raise RuntimeError(f"Tidak dapat terhubung ke BKN API: {error.reason}") from error
 
 def pagination(page, size):
+    try:
+        page = int(page)
+        size = int(size)
+    except (TypeError, ValueError) as error:
+        raise ValueError("page dan size harus berupa bilangan bulat") from error
+
     if page < 0 or size < 1:
         raise ValueError("page harus >= 0 dan size harus >= 1")
     return {"page": page, "size": size}
